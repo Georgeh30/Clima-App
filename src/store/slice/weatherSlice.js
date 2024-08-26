@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-console.log(import.meta.env.VITE_WEATHER_API_KEY);
+
 const fetchWeather = createAsyncThunk(
     'weather/fetchWeather',
     async (city, { rejectWithValue }) => {
         try {
-            
-            
             const apiKey = import.meta.env.VITE_WEATHER_API_KEY; // Usa la variable de entorno
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
 
