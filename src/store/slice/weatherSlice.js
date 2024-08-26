@@ -4,7 +4,7 @@ const fetchWeather = createAsyncThunk(
     'weather/fetchWeather',
     async (city, { rejectWithValue }) => {
         try {
-            const apiKey = '296690ba70cf7a75c8cc6e7bd4314d8a';
+            const apiKey = process.env.REACT_APP_WEATHER_API_KEY; // Usa la variable de entorno
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
 
             if (!response.ok) {
@@ -28,7 +28,7 @@ const fetchForecast = createAsyncThunk(
     'weather/fetchForecast',
     async (city, { rejectWithValue }) => {
         try {
-            const apiKey = '296690ba70cf7a75c8cc6e7bd4314d8a';
+            const apiKey = process.env.REACT_APP_WEATHER_API_KEY; // Usa la variable de entorno
             const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`);
 
             if (!response.ok) {
@@ -52,7 +52,7 @@ const weatherSlice = createSlice({
     name: 'weather',
     initialState: {
       weatherData: null,
-      forecastData: null, // Nuevo estado para el pronóstico
+      forecastData: null,
       status: 'idle',
       error: null,
     },
@@ -89,4 +89,4 @@ const weatherSlice = createSlice({
 });
 
 export default weatherSlice.reducer;
-export { fetchWeather, fetchForecast }; // Exporta fetchForecast para usar en el componente
+export { fetchWeather, fetchForecast };
