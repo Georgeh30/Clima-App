@@ -1,0 +1,15 @@
+/* Limitar el ancho del navbar en pantallas pequeñas y medianas */
+.navbar-floating {
+    max-width: 90%; /* Limita el ancho máximo del navbar al 90% del contenedor */
+    margin: 0 auto; /* Centra el navbar horizontalmente */
+}
+
+/* Estilos para pantallas de 767px o menos */
+
+
+/* Estilos adicionales para pantallas de 480px o menos */
+@media (max-width: 480px) {
+    .navbar-floating {
+        max-width: 90%; /* Reduce el ancho máximo del navbar aún más en pantallas muy pequeñas */
+    }
+}
