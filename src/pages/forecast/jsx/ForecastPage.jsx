@@ -33,9 +33,9 @@ const ForecastPage = () => {
         return localDate;
     };
 
-    const subtractDays = (date, days) => {
+    const addDays = (date, days) => {
         const result = new Date(date);
-        result.setDate(result.getDate() + days); // Cambiado a + days para restar días
+        result.setDate(result.getDate() + days); // Suma días
         return result;
     };
 
@@ -60,6 +60,10 @@ const ForecastPage = () => {
         const utcDate = new Date(day.dt * 1000);
         const localDate = convertUTCToLocal(utcDate);
         const selected = selectedDate ? new Date(selectedDate) : null;
+        // Sumar un día a la fecha seleccionada
+        if (selected) {
+            selected = addDays(selected, 1);
+        }
         const matchesDate = selected ? isSameDay(localDate, selected) : true;
         const matchesWeather = selectedWeather ? day.weather[0].main === selectedWeather : true;
         return matchesDate && matchesWeather;
