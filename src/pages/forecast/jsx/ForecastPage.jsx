@@ -33,10 +33,8 @@ const ForecastPage = () => {
         return localDate;
     };
 
-    const addDays = (date, days) => {
-        const result = new Date(date);
-        result.setDate(result.getDate() + days); // Suma días
-        return result;
+    const subtractDays = (date, days) => {
+        return addDays(date, -days); // Resta días invirtiendo el signo
     };
 
     // Generate options for the last 6 days
@@ -62,7 +60,7 @@ const ForecastPage = () => {
         const selected = selectedDate ? new Date(selectedDate) : null;
         // Sumar un día a la fecha seleccionada
         if (selected) {
-            selected = addDays(selected, 1);
+            selected = subtractDays(selected, 1);
         }
         const matchesDate = selected ? isSameDay(localDate, selected) : true;
         const matchesWeather = selectedWeather ? day.weather[0].main === selectedWeather : true;
