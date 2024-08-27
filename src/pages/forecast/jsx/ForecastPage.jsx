@@ -35,7 +35,7 @@ const ForecastPage = () => {
 
     const subtractDays = (date, days) => {
         const result = new Date(date);
-        result.setDate(result.getDate() - days); // Cambiado a -days para restar días
+        result.setDate(result.getDate() + days); // Cambiado a + days para restar días
         return result;
     };
 
